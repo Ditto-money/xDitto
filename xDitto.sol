@@ -1,5 +1,30 @@
-pragma solidity 0.6.12;
+// SPDX-License-Identifier: MIT
 
+/*
+MIT License
+
+Copyright (c) 2020 DITTO Money
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+pragma solidity 0.6.12;
 
 // 
 /*
@@ -120,11 +145,6 @@ interface IBEP20 {
      * @dev Returns the token name.
      */
     function name() external view returns (string memory);
-
-    /**
-     * @dev Returns the bep token owner.
-     */
-    function getOwner() external view returns (address);
 
     /**
      * @dev Returns the amount of tokens owned by `account`.
@@ -566,7 +586,7 @@ library Address {
  * functions have been added to mitigate the well-known issues around setting
  * allowances. See {IBEP20-approve}.
  */
-contract BEP20 is Context, IBEP20, Ownable {
+contract BEP20 is Context, IBEP20 {
     using SafeMath for uint256;
     using Address for address;
 
@@ -593,13 +613,6 @@ contract BEP20 is Context, IBEP20, Ownable {
         _name = name;
         _symbol = symbol;
         _decimals = 18;
-    }
-
-    /**
-     * @dev Returns the bep token owner.
-     */
-    function getOwner() external override view returns (address) {
-        return owner();
     }
 
     /**
@@ -873,7 +886,6 @@ contract xDitto is BEP20('xDitto', 'XDITTO') {
         dittoPool = new TokenPool(ditto);
     }
     
-    
     function getMintAmount(uint256 amountIn) public view returns (uint256) {
         if (totalSupply() == 0) {
             return amountIn * 1e9;
@@ -908,7 +920,6 @@ contract xDitto is BEP20('xDitto', 'XDITTO') {
         _moveDelegates(_delegates[msg.sender], address(0), _amount);
     }
     
-    /// @notice A record of each accounts delegate
     mapping (address => address) internal _delegates;
 
     /// @notice A checkpoint for marking number of votes from a given block
