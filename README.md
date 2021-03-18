@@ -1,6 +1,6 @@
 # xDitto
 
-xDITTO is a non-rebasing BEP20 token that is swappable for DITTO at a variable rate. It's purpose is to create an asset is tied to the market cap of DITTO, can be easily listed on CEXes, can be used in more yield farms and dapps, and expands DITTO's total reach and market cap. xDITTO is can only be created by locking DITTO meaning that it does not dilute DITTO's market cap.
+xDITTO is a non-rebasing BEP20 token that is swappable for DITTO at a variable rate. It's purpose is to create an asset is tied to the market cap of DITTO, can be easily listed on CEXes, can be used in more yield farms and dapps to expand DITTO's total reach and market cap. xDITTO is can only be created by locking DITTO meaning that it does not dilute DITTO's market cap.
 
 ## Minting
 
